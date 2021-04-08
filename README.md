@@ -8,9 +8,9 @@ Please view [InstrumentedTest.java](tari-crypto-android/src/androidTest/java/com
 
 - Clone the project with `git clone https://github.com/tari-labs/tari-crypto-android.git`.
 - Open Android Studio, and open the project with `Open an Existing Project`.
-- Start an emulator.
+- Start an emulator or connect an Android device.
 - Right click on the class file `com.tari.crypto.android.InstrumentedTest`, and create a run configuration for it.
-- Run the class `com.tari.crypto.android.InstrumentedTest`, and the tests will be run on the emulator.
+- Run the class `com.tari.crypto.android.InstrumentedTest`, and the tests will be run on the emulator or device.
 
 ## Installation
 

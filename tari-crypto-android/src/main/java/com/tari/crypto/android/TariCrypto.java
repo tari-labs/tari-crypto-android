@@ -44,10 +44,6 @@ public class TariCrypto {
 
     private static final String LOG_TAG = "TariCrypto";
 
-    static {
-        System.loadLibrary("native-lib");
-    }
-
     static native String jniVersion();
 
     /**

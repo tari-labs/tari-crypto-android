@@ -37,7 +37,7 @@
 #include <cmath>
 #include <android/log.h>
 
-#define LOG_TAG "Tari Crypto"
+#define LOG_TAG "TariCrypto"
 
 /**
  * Log functions. Log example:
