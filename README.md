@@ -1,8 +1,8 @@
 # Tari Crypto Android
 
-This Android module is a wrapper around the [Tari Crypto] library. It contains native libraries for different Android architectures, and the necessary JNI, wrapper and model classes to enable the developers to generate key pairs, sign messages and verify message signatures.
+This Android module is a wrapper around the [Tari Crypto](https://github.com/tari-project/tari-crypto) library. It contains native libraries for different Android architectures, and the necessary JNI, wrapper and model classes to enable the developers to generate key pairs, sign messages and verify message signatures.
 
-Please view `InstrumentedTest.java` for usage examples.
+Please view [InstrumentedTest.java](tari-crypto-android/src/androidTest/java/com/tari/crypto/android/InstrumentedTest.java) for usage examples.
 
 ## Testing
 
