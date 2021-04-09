@@ -49,8 +49,8 @@ Java_com_tari_crypto_android_TariCrypto_jniVersion(JNIEnv *jEnv, jclass jClass) 
 
 extern "C"
 JNIEXPORT jstring JNICALL
-Java_com_tari_crypto_android_model_Key_jniLookupErrorCode(JNIEnv *jEnv, jclass jClass,
-                                                           jint error_code) {
+Java_com_tari_crypto_android_model_TariKey_jniLookupErrorCode(JNIEnv *jEnv, jclass jClass,
+                                                              jint error_code) {
     char *err_msg = static_cast<char *>(malloc(sizeof(char) * (128 + 1)));
     lookup_error_message(error_code, &err_msg[0], 128);
     jstring result = jEnv->NewStringUTF(err_msg);
@@ -61,7 +61,7 @@ Java_com_tari_crypto_android_model_Key_jniLookupErrorCode(JNIEnv *jEnv, jclass j
 
 extern "C"
 JNIEXPORT jobject JNICALL
-Java_com_tari_crypto_android_model_KeyPair_jniRandomKeyPair(JNIEnv *jEnv, jclass jClass) {
+Java_com_tari_crypto_android_model_TariKeyPair_jniRandomKeyPair(JNIEnv *jEnv, jclass jClass) {
     // Java does not have any unsigned types, would be better to modify the FFI
     // interface to accept and return a char* that can be parsed into a string
     uint8_t pub_key[KEY_LENGTH];
@@ -83,9 +83,9 @@ Java_com_tari_crypto_android_model_KeyPair_jniRandomKeyPair(JNIEnv *jEnv, jclass
 
 extern "C"
 JNIEXPORT jobject JNICALL
-Java_com_tari_crypto_android_model_Key_jniSignMessage(JNIEnv *jEnv, jclass jClass,
-                                                      jbyteArray secret_key,
-                                                      jstring message) {
+Java_com_tari_crypto_android_model_TariKey_jniSignMessage(JNIEnv *jEnv, jclass jClass,
+                                                          jbyteArray secret_key,
+                                                          jstring message) {
     uint8_t signature[KEY_LENGTH];
     uint8_t nonce[KEY_LENGTH];
     jbyte *secPtr = jEnv->GetByteArrayElements(secret_key, 0);
@@ -108,10 +108,10 @@ Java_com_tari_crypto_android_model_Key_jniSignMessage(JNIEnv *jEnv, jclass jClas
 
 extern "C"
 JNIEXPORT jboolean JNICALL
-Java_com_tari_crypto_android_model_Key_jniVerifyMessage(JNIEnv *jEnv, jclass jClass,
-                                                        jbyteArray public_key,
-                                                        jstring message, jbyteArray nonce,
-                                                        jbyteArray signature, jint error) {
+Java_com_tari_crypto_android_model_TariKey_jniVerifyMessage(JNIEnv *jEnv, jclass jClass,
+                                                            jbyteArray public_key,
+                                                            jstring message, jbyteArray nonce,
+                                                            jbyteArray signature, jint error) {
     jbyte *pubPtr = jEnv->GetByteArrayElements(public_key, 0);
     jbyte *noncePtr = jEnv->GetByteArrayElements(nonce, 0);
     jbyte *sigPtr = jEnv->GetByteArrayElements(signature, 0);

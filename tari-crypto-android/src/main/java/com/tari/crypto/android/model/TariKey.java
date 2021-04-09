@@ -34,7 +34,6 @@ package com.tari.crypto.android.model;
 
 import android.util.Pair;
 
-import com.tari.crypto.android.Util;
 import com.tari.crypto.android.exception.TariCryptoException;
 
 /**
@@ -44,7 +43,7 @@ import com.tari.crypto.android.exception.TariCryptoException;
  *
  * @author The Tari Development Team
  */
-public class Key {
+public class TariKey {
 
     public final byte[] bytes;
 
@@ -73,16 +72,16 @@ public class Key {
                                            byte[] signature,
                                            int errorCode);
 
-    public Key(final byte[] bytes) {
+    public TariKey(final byte[] bytes) {
         this.bytes = bytes;
     }
 
     /**
      * Sign a given message - used with a private key.
      */
-    public SignedMessage signMessage(final String message) {
+    public TariSignedMessage signMessage(final String message) {
         final Pair<byte[], byte[]> signedMessage = jniSignMessage(bytes, message);
-        return new SignedMessage(
+        return new TariSignedMessage(
                 message,
                 signedMessage.first,
                 signedMessage.second
@@ -94,7 +93,7 @@ public class Key {
      *
      * @throws TariCryptoException translated error from the native layer
      */
-    public boolean verifySignature(final SignedMessage signedMessage)
+    public boolean verifySignature(final TariSignedMessage signedMessage)
             throws TariCryptoException {
         int errorCode = 0;
         final boolean verificationIsSuccessful = jniVerifyMessage(

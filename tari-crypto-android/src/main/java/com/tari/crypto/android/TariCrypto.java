@@ -42,7 +42,7 @@ import android.util.Log;
  */
 public class TariCrypto {
 
-    private static final String LOG_TAG = "TariCrypto";
+    public static final String LOG_TAG = "TariCrypto";
 
     static native String jniVersion();
 

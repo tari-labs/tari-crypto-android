@@ -39,29 +39,38 @@ import android.util.Pair;
  *
  * @author The Tari Development Team
  */
-public class KeyPair {
+public class TariKeyPair {
 
-    public final Key privateKey;
-    public final Key publicKey;
+    public final TariKey privateKey;
+    public final TariKey publicKey;
 
     static native Pair<byte[], byte[]> jniRandomKeyPair();
 
-    private KeyPair(final byte[] privateKey,
-                   final byte[] publicKey) {
-        this.privateKey = new Key(privateKey);
-        this.publicKey = new Key(publicKey);
+    private TariKeyPair(final byte[] privateKey,
+                        final byte[] publicKey) {
+        this.privateKey = new TariKey(privateKey);
+        this.publicKey = new TariKey(publicKey);
     }
 
     /**
      * This static method is the only way to create a
      * new random key pair.
      */
-    public static KeyPair generateRandom() {
+    public static TariKeyPair generateRandom() {
         final Pair<byte[], byte[]> keyPair = jniRandomKeyPair();
-        return new KeyPair(
+        return new TariKeyPair(
                 keyPair.first,
                 keyPair.second
         );
+    }
+
+    @SuppressWarnings("NullableProblems")
+    @Override
+    public String toString() {
+        return "TariKeyPair{" +
+                "privateKey='" + privateKey.toString() + '\'' +
+                ", publicKey='" + publicKey.toString() + '\'' +
+                '}';
     }
 
 }
