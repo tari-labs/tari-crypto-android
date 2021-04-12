@@ -34,7 +34,12 @@ package com.tari.crypto.android.model;
 
 import android.util.Pair;
 
+import com.tari.crypto.android.TariCryptoUtil;
 import com.tari.crypto.android.exception.TariCryptoException;
+
+import java.security.InvalidParameterException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * A cryptographic key that consists of bytes.
@@ -46,6 +51,8 @@ import com.tari.crypto.android.exception.TariCryptoException;
 public class TariKey {
 
     public final byte[] bytes;
+
+    private static final Pattern HEX_PATTERN = Pattern.compile("\\p{XDigit}{64}");
 
     /**
      * Native method that returns the description for the
@@ -74,6 +81,14 @@ public class TariKey {
 
     public TariKey(final byte[] bytes) {
         this.bytes = bytes;
+    }
+
+    public TariKey(final String hexString) {
+        final Matcher matcher = HEX_PATTERN.matcher(hexString);
+        if (!matcher.matches()) {
+            throw new InvalidParameterException(hexString + " is not a valid hex string.");
+        }
+        this.bytes = TariCryptoUtil.hexToBytes(hexString);
     }
 
     /**
@@ -119,7 +134,7 @@ public class TariKey {
     @SuppressWarnings("NullableProblems")
     @Override
     public String toString() {
-        return Util.bytesToHex(bytes);
+        return TariCryptoUtil.bytesToHex(bytes);
     }
 
 }

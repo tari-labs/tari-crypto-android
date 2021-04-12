@@ -52,6 +52,12 @@ public class TariKeyPair {
         this.publicKey = new TariKey(publicKey);
     }
 
+    public TariKeyPair(final TariKey privateKey,
+                       final TariKey publicKey) {
+        this.privateKey = privateKey;
+        this.publicKey = publicKey;
+    }
+
     /**
      * This static method is the only way to create a
      * new random key pair.

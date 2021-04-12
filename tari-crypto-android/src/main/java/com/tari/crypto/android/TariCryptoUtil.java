@@ -30,17 +30,27 @@
  * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.tari.crypto.android.model;
+package com.tari.crypto.android;
 
 import java.math.BigInteger;
 import java.util.Locale;
 
-abstract class Util {
+public abstract class TariCryptoUtil {
 
-    static String bytesToHex(byte[] bytes) {
+    public static String bytesToHex(byte[] bytes) {
         return new BigInteger(1, bytes)
                 .toString(16)
                 .toUpperCase(Locale.ENGLISH);
+    }
+
+    public static byte[] hexToBytes(final String s) {
+        int len = s.length();
+        byte[] data = new byte[len / 2];
+        for (int i = 0; i < len; i += 2) {
+            data[i / 2] = (byte) ((Character.digit(s.charAt(i), 16) << 4)
+                    + Character.digit(s.charAt(i+1), 16));
+        }
+        return data;
     }
 
 }
