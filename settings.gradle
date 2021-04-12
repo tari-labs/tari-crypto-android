@@ -1,2 +1,2 @@
-rootProject.name = "TariCryptoAndroid"
-include ':tari-crypto-android'
+rootProject.name = "tari-crypto"
+include ':tari-crypto'
