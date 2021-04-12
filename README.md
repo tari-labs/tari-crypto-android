@@ -6,22 +6,33 @@ This Android module is a wrapper around the [Tari Crypto](https://github.com/tar
 
 1. Add the JitPack repository in your root `build.gradle` at the end of repositories:
 
-	```gradle
-	allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
-	```
+    ```gradle
+    allprojects {
+        repositories {
+            // ...
+            maven { url 'https://jitpack.io' }
+        }
+    }
+    ```
 
 2. Add the dependency:
 
-	```gradle
-	dependencies {
-		implementation 'com.github.tari-labs:tari-crypto-android:0.9.0.1'
-	}
-	```
+    ```gradle
+    dependencies {
+        implementation 'com.github.tari-labs:tari-crypto-android:0.9.0.1'
+    }
+    ```
+
+3. Set your NDK version in the app-level `build.gradle` file (tested with `20.1.5948944` and `21.3.6528147`):
+
+    ```gradle
+    android {
+        compileSdkVersion 30
+        ndkVersion '20.1.5948944'
+        
+        // ...
+    }
+    ```
 
 ## Usage
 
